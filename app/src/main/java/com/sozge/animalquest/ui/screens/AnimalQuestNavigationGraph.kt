@@ -16,7 +16,7 @@ fun AnimalQuestNavigationGraph() {
         }
 
         composable(Routes.WELCOME_SCREEN) {
-            welcomeScreen()
+            welcomeScreen(navController)
         }
     }
 }
