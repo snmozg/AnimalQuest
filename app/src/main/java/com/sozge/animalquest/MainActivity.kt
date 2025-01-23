@@ -14,6 +14,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.sozge.animalquest.ui.screens.AnimalQuestNavigationGraph
 import com.sozge.animalquest.ui.screens.Routes
 import com.sozge.animalquest.ui.screens.userInputScreen
 import com.sozge.animalquest.ui.screens.welcomeScreen
@@ -33,18 +34,7 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun AnimalQuestApp() {
-
-    val navController = rememberNavController()
-    NavHost(navController = navController, startDestination = Routes.USER_INPUT_SCREEN) {
-        composable(Routes.USER_INPUT_SCREEN) {
-            userInputScreen()
-        }
-
-        composable(Routes.WELCOME_SCREEN) {
-            welcomeScreen()
-        }
-    }
-
+    AnimalQuestNavigationGraph()
 }
 
 

@@ -1,3 +1,4 @@
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
@@ -5,12 +6,12 @@ plugins {
 
 android {
     namespace = "com.sozge.animalquest"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.sozge.animalquest"
         minSdk = 24
-        targetSdk = 34
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 
@@ -67,7 +68,15 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
-    //Navigation
-    val nav_version = "2.8.4"
+    implementation("androidx.compose.material:material-icons-extended:1.7.4")
+
+
+    implementation("io.coil-kt:coil-compose:2.4.0")
+
+
+    val nav_version = "2.6.0-rc01"
     implementation("androidx.navigation:navigation-compose:$nav_version")
+
+    implementation ("androidx.compose.ui:ui:1.7.5") // veya daha yeni sürüm
+    implementation ("androidx.compose.foundation:foundation:1.7.5")
 }
