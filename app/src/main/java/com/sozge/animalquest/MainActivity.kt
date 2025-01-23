@@ -11,6 +11,12 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import com.sozge.animalquest.ui.screens.Routes
+import com.sozge.animalquest.ui.screens.userInputScreen
+import com.sozge.animalquest.ui.screens.welcomeScreen
 import com.sozge.animalquest.ui.theme.AnimalQuestTheme
 
 class MainActivity : ComponentActivity() {
@@ -19,29 +25,26 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             AnimalQuestTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
+                    AnimalQuestApp()
                 }
             }
         }
     }
-}
 
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
+fun AnimalQuestApp() {
 
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    AnimalQuestTheme {
-        Greeting("Android")
+    val navController = rememberNavController()
+    NavHost(navController = navController, startDestination = Routes.USER_INPUT_SCREEN) {
+        composable(Routes.USER_INPUT_SCREEN) {
+            userInputScreen()
+        }
+
+        composable(Routes.WELCOME_SCREEN) {
+            welcomeScreen()
+        }
     }
+
 }
+
+
