@@ -87,7 +87,7 @@ fun welcomeScreen(
                             .height(150.dp)
                             .background(
                                 color = Color.White,
-                                shape = RoundedCornerShape(12.dp)
+                                shape = RoundedCornerShape(24.dp)
                             )
                             .padding(16.dp)
                             .border(1.dp, Color.Gray, RoundedCornerShape(12.dp))

@@ -53,7 +53,7 @@ fun userInputScreen(userInputViewModel: userInputViewModel, navController: NavCo
 
             Spacer(modifier = Modifier.size(60.dp))
 
-            TextComponent(textValue = "Name", textSize = 18.sp)
+            /*TextComponent(textValue = "Name", textSize = 18.sp)
             Spacer(modifier = Modifier.size(10.dp))
 
             TextFieldComponent(
@@ -65,6 +65,8 @@ fun userInputScreen(userInputViewModel: userInputViewModel, navController: NavCo
             )
 
             Spacer(modifier = Modifier.size(20.dp))
+
+             */
 
             TextComponent(textValue = "What do you like", textSize = 18.sp)
 
