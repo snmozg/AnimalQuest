@@ -15,18 +15,14 @@ fun AnimalQuestNavigationGraph(userInputViewModel: userInputViewModel = viewMode
     val navController = rememberNavController()
     NavHost(navController = navController, startDestination = "user_input_screen") {
         composable("user_input_screen") {
-            userInputScreen(navController = navController, userInputViewModel = userInputViewModel)
+            userInputScreen(userInputViewModel, navController)
         }
         composable(
-            "details_screen/{animal}/{userName}",
-            arguments = listOf(
-                navArgument("animal") { type = NavType.StringType },
-                navArgument("userName") { type = NavType.StringType }
-            )
+            "details_screen/{animal}",
+            arguments = listOf(navArgument("animal") { type = NavType.StringType })
         ) { backStackEntry ->
             val animal = backStackEntry.arguments?.getString("animal") ?: ""
-            val userName = backStackEntry.arguments?.getString("userName") ?: ""
-            welcomeScreen(navController = navController, selectedAnimal = animal, userName = userName)
+            welcomeScreen(navController = navController, selectedAnimal = animal, userName = userInputViewModel.uiState.value.nameEntered)
         }
     }
 }
