@@ -7,6 +7,11 @@ import com.sozge.animalquest.ui.screens.UserInputScreenState
 
 class userInputViewModel: ViewModel() {
 
+    companion object {
+        const val TAG = "userInputViewModel"
+    }
+
+
         var uiState = mutableStateOf(UserInputScreenState())
 
     fun onEvent(event: UserDataUiEvents) {

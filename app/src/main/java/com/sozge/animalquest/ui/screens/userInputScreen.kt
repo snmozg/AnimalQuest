@@ -60,8 +60,17 @@ fun userInputScreen(userInputViewModel: userInputViewModel) {
 
             Row (modifier = Modifier.fillMaxWidth()) {
 
-                AnimalCard(image = R.drawable.cat,false)
-                AnimalCard(image =R.drawable.dog,true)
+                AnimalCard(
+                    image = R.drawable.cat,
+                    animalSelected = {
+                userInputViewModel.onEvent(UserDataUiEvents.AnimalSelected(it))
+                    },
+                    selected= userInputViewModel.uiState.value.animalSelected == "Cat")
+
+                AnimalCard(image =R.drawable.dog,animalSelected = {
+                    userInputViewModel.onEvent(UserDataUiEvents.AnimalSelected(it))
+                    }, selected= userInputViewModel.uiState.value.animalSelected == "Dog")
+
 
             }
         }

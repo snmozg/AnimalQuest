@@ -120,7 +120,9 @@ fun AnimalCard(image: Int, selected:Boolean,
                 .padding(16.dp)
                 .wrapContentWidth()
                 .wrapContentHeight()
-                .clickable {  }
+                .clickable {
+                    val animalName = if (image == R.drawable.cat) "Cat" else "Dog"
+                }
 
 
             ,
