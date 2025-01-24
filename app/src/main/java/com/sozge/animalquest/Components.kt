@@ -139,14 +139,13 @@ fun ButtonComponent(
     goToDetailsScreen: () -> Unit
 ) {
     Button(
-        modifier= Modifier.fillMaxWidth(),
-        onClick = { /*TODO*/ }) {
-        
-        TextComponent(textValue = "Go to Details",
+        modifier = Modifier.fillMaxWidth(),
+        onClick = goToDetailsScreen
+    ) {
+        TextComponent(
+            textValue = "Go to Details",
             textSize = 18.sp,
             colorValue = Color.White
-
         )
-
     }
 }
