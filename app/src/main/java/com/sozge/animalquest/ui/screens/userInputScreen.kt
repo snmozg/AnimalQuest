@@ -1,28 +1,25 @@
 package com.sozge.animalquest.ui.screens
 
 
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavHostController
 import com.sozge.animalquest.TextComponent
+import com.sozge.animalquest.TextFieldComponent
 import com.sozge.animalquest.TopBar
+import com.sozge.animalquest.ui.userInputViewModel
 
 
 @Composable
-fun userInputScreen(
-    navController: NavHostController) {
+fun userInputScreen(userInputViewModel: userInputViewModel) {
     Surface(
         modifier= Modifier
             .fillMaxSize()
@@ -46,6 +43,20 @@ fun userInputScreen(
                 textSize = 18.sp)
 
             Spacer(modifier =Modifier.size(60.dp))
+
+            TextComponent(textValue = "Name", textSize = 18.sp)
+            Spacer(modifier =Modifier.size(10.dp))
+
+            TextFieldComponent(onTextChanged =
+            { userInputViewModel.onEvent(
+                UserDataUiEvents.UserNameEntered(it)
+            ) })
+            Spacer(modifier =Modifier.size(20.dp))
+            
+            TextComponent(textValue = "What do you like", textSize = 18.sp)
+
+
+
 
         }
     }
