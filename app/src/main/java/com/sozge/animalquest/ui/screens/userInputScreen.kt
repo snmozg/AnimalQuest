@@ -2,6 +2,7 @@ package com.sozge.animalquest.ui.screens
 
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -12,6 +13,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.sozge.animalquest.AnimalCard
+import com.sozge.animalquest.R
 import com.sozge.animalquest.TextComponent
 import com.sozge.animalquest.TextFieldComponent
 import com.sozge.animalquest.TopBar
@@ -55,9 +58,12 @@ fun userInputScreen(userInputViewModel: userInputViewModel) {
             
             TextComponent(textValue = "What do you like", textSize = 18.sp)
 
+            Row (modifier = Modifier.fillMaxWidth()) {
 
+                AnimalCard(image = R.drawable.cat,false)
+                AnimalCard(image =R.drawable.dog,true)
 
-
+            }
         }
     }
 }
