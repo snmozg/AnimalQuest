@@ -12,7 +12,7 @@ import com.sozge.animalquest.ui.userInputViewModel
 fun AnimalQuestNavigationGraph(userInputViewModel: userInputViewModel = viewModel()) {
 
     val navController = rememberNavController()
-    NavHost(navController = navController, startDestination = Routes.WELCOME_SCREEN) {
+    NavHost(navController = navController, startDestination = Routes.USER_INPUT_SCREEN) {
         composable(Routes.USER_INPUT_SCREEN) {
             userInputScreen(userInputViewModel)
         }

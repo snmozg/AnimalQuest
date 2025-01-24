@@ -25,7 +25,31 @@ class userInputViewModel: ViewModel() {
         }
     }
 
+    fun isValidState() : Boolean {
+        if( !uiState.value.nameEntered.isNullOrEmpty()
+            &&
+            !uiState.value.animalSelected.isNullOrEmpty()) {
+            return true
+        }else {
+            return false
+        }
+
+    }
+
 }
+
+val animalFacts = mapOf(
+    "Cat" to listOf(
+        "Cats sleep 12–16 hours a day.",
+        "Cats can rotate their ears 180 degrees.",
+        "A group of cats is called a clowder."
+    ),
+    "Dog" to listOf(
+        "Dogs have a sense of time and miss you when you’re gone.",
+        "Dogs can learn more than 1000 words.",
+        "A dog’s nose print is unique, like a human fingerprint."
+    )
+)
 
 
 

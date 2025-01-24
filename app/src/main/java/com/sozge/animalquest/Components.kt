@@ -99,6 +99,7 @@ fun TextFieldComponent(onTextChanged: (String) -> Unit) {
 @Composable
 fun AnimalCard(image: Int, selected:Boolean,
                animalSelected: (animalName:String) -> Unit) {
+    val localFocusManager = LocalFocusManager.current
     Card(
         modifier = Modifier
             .padding(24.dp)
@@ -122,9 +123,10 @@ fun AnimalCard(image: Int, selected:Boolean,
                 .wrapContentHeight()
                 .clickable {
                     val animalName = if (image == R.drawable.cat) "Cat" else "Dog"
+                    localFocusManager.clearFocus()
                 }
             ,
-            painter = painterResource(id = R.drawable.dog),
+            painter = painterResource(id = image),
             contentDescription = "dog"
         )
 

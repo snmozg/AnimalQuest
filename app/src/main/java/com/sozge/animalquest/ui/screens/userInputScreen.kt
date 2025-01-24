@@ -1,6 +1,7 @@
 package com.sozge.animalquest.ui.screens
 
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -25,61 +26,70 @@ import com.sozge.animalquest.ui.userInputViewModel
 @Composable
 fun userInputScreen(userInputViewModel: userInputViewModel) {
     Surface(
-        modifier= Modifier
+        modifier = Modifier
             .fillMaxSize()
-
     ) {
         Column(
             modifier = Modifier
-                .fillMaxWidth()
-                .padding(18.dp)
-
+                .fillMaxSize()
+                .padding(top = 50.dp)
+                .padding(18.dp),
+            verticalArrangement = Arrangement.Top
         ) {
             TopBar("Hi There! \uD83D\uDE0B")
-            
-            TextComponent(
-                textValue = "Let's learn about You!" ,
-                textSize = 24.sp)
 
-            Spacer(modifier =Modifier.size(20.dp))
             TextComponent(
-                textValue = "This app will prepare a details page based on input provided by you." ,
-                textSize = 18.sp)
+                textValue = "Let's learn about You!",
+                textSize = 24.sp
+            )
 
-            Spacer(modifier =Modifier.size(60.dp))
+            Spacer(modifier = Modifier.size(20.dp))
+            TextComponent(
+                textValue = "This app will prepare a details page based on input provided by you.",
+                textSize = 18.sp
+            )
+
+            Spacer(modifier = Modifier.size(60.dp))
 
             TextComponent(textValue = "Name", textSize = 18.sp)
-            Spacer(modifier =Modifier.size(10.dp))
+            Spacer(modifier = Modifier.size(10.dp))
 
-            TextFieldComponent(onTextChanged =
-            { userInputViewModel.onEvent(
-                UserDataUiEvents.UserNameEntered(it)
-            ) })
-            Spacer(modifier =Modifier.size(20.dp))
-            
+            TextFieldComponent(
+                onTextChanged = {
+                    userInputViewModel.onEvent(
+                        UserDataUiEvents.UserNameEntered(it)
+                    )
+                }
+            )
+
+            Spacer(modifier = Modifier.size(20.dp))
+
             TextComponent(textValue = "What do you like", textSize = 18.sp)
 
-            Row (modifier = Modifier.fillMaxWidth()) {
-
+            Row(
+                modifier = Modifier.fillMaxWidth()
+            ) {
                 AnimalCard(
                     image = R.drawable.cat,
                     animalSelected = {
-                userInputViewModel.onEvent(UserDataUiEvents.AnimalSelected(it))
+                        userInputViewModel.onEvent(UserDataUiEvents.AnimalSelected(it))
                     },
-                    selected= userInputViewModel.uiState.value.animalSelected == "Cat")
+                    selected = userInputViewModel.uiState.value.animalSelected == "Cat"
+                )
 
-                AnimalCard(image =R.drawable.dog,animalSelected = {
-                    userInputViewModel.onEvent(UserDataUiEvents.AnimalSelected(it))
-                    }, selected= userInputViewModel.uiState.value.animalSelected == "Dog")
-
-
+                AnimalCard(
+                    image = R.drawable.dog,
+                    animalSelected = {
+                        userInputViewModel.onEvent(UserDataUiEvents.AnimalSelected(it))
+                    },
+                    selected = userInputViewModel.uiState.value.animalSelected == "Dog"
+                )
             }
 
-            Spacer(modifier =Modifier.weight(1f))
+            Spacer(modifier = Modifier.weight(1f))
 
-            if (!userInputViewModel.uiState.value.nameEntered.isNotEmpty() &&
-                !userInputViewModel.uiState.value.animalSelected.isNotEmpty()) {
-                ButtonComponent (
+            if (userInputViewModel.isValidState()) {
+                ButtonComponent(
                     goToDetailsScreen = {
 
                     }
@@ -88,4 +98,5 @@ fun userInputScreen(userInputViewModel: userInputViewModel) {
         }
     }
 }
+
 

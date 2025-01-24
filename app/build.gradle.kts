@@ -73,7 +73,7 @@ dependencies {
 
     implementation("io.coil-kt:coil-compose:2.4.0")
 
-    implementation("android.lifecycle:lifecycle-viewmodelcompose:2.4.1")
+    //implementation("android.lifecycle:lifecycle-viewmodelcompose:2.4.1")
 
 
     val nav_version = "2.6.0-rc01"
