@@ -14,6 +14,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.sozge.animalquest.AnimalCard
 import com.sozge.animalquest.ButtonComponent
 import com.sozge.animalquest.R
@@ -21,10 +22,11 @@ import com.sozge.animalquest.TextComponent
 import com.sozge.animalquest.TextFieldComponent
 import com.sozge.animalquest.TopBar
 import com.sozge.animalquest.ui.userInputViewModel
+import java.util.jar.Attributes.Name
 
 
 @Composable
-fun userInputScreen(userInputViewModel: userInputViewModel) {
+fun userInputScreen(userInputViewModel: userInputViewModel, navController: NavController) {
     Surface(
         modifier = Modifier
             .fillMaxSize()
@@ -69,20 +71,22 @@ fun userInputScreen(userInputViewModel: userInputViewModel) {
             Row(
                 modifier = Modifier.fillMaxWidth()
             ) {
+                val name = userInputViewModel.uiState.value.nameEntered
+
                 AnimalCard(
+                    navController = navController,
                     image = R.drawable.cat,
-                    animalSelected = {
-                        userInputViewModel.onEvent(UserDataUiEvents.AnimalSelected(it))
-                    },
-                    selected = userInputViewModel.uiState.value.animalSelected == "Cat"
+                    selected = userInputViewModel.uiState.value.animalSelected == "Cat",
+                    animalName = "Cat",
+                    userName = name
                 )
 
                 AnimalCard(
+                    navController = navController,
                     image = R.drawable.dog,
-                    animalSelected = {
-                        userInputViewModel.onEvent(UserDataUiEvents.AnimalSelected(it))
-                    },
-                    selected = userInputViewModel.uiState.value.animalSelected == "Dog"
+                    selected = userInputViewModel.uiState.value.animalSelected == "Dog",
+                    animalName = "Dog",
+                    userName = name
                 )
             }
 
@@ -91,7 +95,8 @@ fun userInputScreen(userInputViewModel: userInputViewModel) {
             if (userInputViewModel.isValidState()) {
                 ButtonComponent(
                     goToDetailsScreen = {
-
+                        val selectedAnimal = userInputViewModel.uiState.value.animalSelected
+                        navController.navigate("details_screen/$selectedAnimal")
                     }
                 )
             }

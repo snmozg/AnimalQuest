@@ -24,9 +24,10 @@ import com.sozge.animalquest.TopBar
 import com.sozge.animalquest.ui.animalFacts
 
 @Composable
-fun WelcomeScreen(
+fun welcomeScreen(
     navController: NavController,
-    selectedAnimal: String
+    selectedAnimal: String,
+    userName: String
 ) {
     val facts = animalFacts[selectedAnimal] ?: emptyList()
     val randomFact = facts.randomOrNull() ?: "No facts available."

@@ -36,6 +36,7 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 
 @Composable
  fun TopBar(value: String) {
@@ -97,8 +98,13 @@ fun TextFieldComponent(onTextChanged: (String) -> Unit) {
 }
 
 @Composable
-fun AnimalCard(image: Int, selected:Boolean,
-               animalSelected: (animalName:String) -> Unit) {
+fun AnimalCard(
+    navController: NavController,
+    image: Int,
+    selected: Boolean,
+    animalName: String,
+    userName: String
+) {
     val localFocusManager = LocalFocusManager.current
     Card(
         modifier = Modifier
@@ -114,24 +120,19 @@ fun AnimalCard(image: Int, selected:Boolean,
                     color = if (selected) Color.Green else Color.Transparent,
                     shape = RoundedCornerShape(8.dp)
                 )
-        )
-    {
-        Image(
-            modifier = Modifier
-                .padding(16.dp)
-                .wrapContentWidth()
-                .wrapContentHeight()
-                .clickable {
-                    val animalName = if (image == R.drawable.cat) "Cat" else "Dog"
-                    localFocusManager.clearFocus()
-                }
-            ,
-            painter = painterResource(id = image),
-            contentDescription = "dog"
-        )
-
+        ) {
+            Image(
+                modifier = Modifier
+                    .padding(16.dp)
+                    .clickable {
+                        localFocusManager.clearFocus()
+                        navController.navigate("details_screen/$animalName")
+                    },
+                painter = painterResource(id = image),
+                contentDescription = "animal image"
+            )
+        }
     }
-}
 }
 
 @Composable
