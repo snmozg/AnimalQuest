@@ -15,6 +15,7 @@ import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.OutlinedTextField
@@ -105,15 +106,14 @@ fun AnimalCard(image: Int, selected:Boolean,
         elevation = CardDefaults.cardElevation(4.dp)
     ) {
         Box(
-            modifier =Modifier
+            modifier = Modifier
                 .fillMaxSize()
                 .border(
                     width = 1.dp,
-                    color= if (selected) Color.Green else Color.Transparent,
+                    color = if (selected) Color.Green else Color.Transparent,
                     shape = RoundedCornerShape(8.dp)
                 )
         )
-
     {
         Image(
             modifier = Modifier
@@ -123,15 +123,28 @@ fun AnimalCard(image: Int, selected:Boolean,
                 .clickable {
                     val animalName = if (image == R.drawable.cat) "Cat" else "Dog"
                 }
-
-
             ,
-
             painter = painterResource(id = R.drawable.dog),
             contentDescription = "dog"
         )
 
     }
-
 }
+}
+
+@Composable
+fun ButtonComponent(
+    goToDetailsScreen: () -> Unit
+) {
+    Button(
+        modifier= Modifier.fillMaxWidth(),
+        onClick = { /*TODO*/ }) {
+        
+        TextComponent(textValue = "Go to Details",
+            textSize = 18.sp,
+            colorValue = Color.White
+
+        )
+
+    }
 }

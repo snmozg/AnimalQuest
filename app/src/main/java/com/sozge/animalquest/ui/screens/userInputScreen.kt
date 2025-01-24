@@ -14,6 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.sozge.animalquest.AnimalCard
+import com.sozge.animalquest.ButtonComponent
 import com.sozge.animalquest.R
 import com.sozge.animalquest.TextComponent
 import com.sozge.animalquest.TextFieldComponent
@@ -72,6 +73,17 @@ fun userInputScreen(userInputViewModel: userInputViewModel) {
                     }, selected= userInputViewModel.uiState.value.animalSelected == "Dog")
 
 
+            }
+
+            Spacer(modifier =Modifier.weight(1f))
+
+            if (!userInputViewModel.uiState.value.nameEntered.isNotEmpty() &&
+                !userInputViewModel.uiState.value.animalSelected.isNotEmpty()) {
+                ButtonComponent (
+                    goToDetailsScreen = {
+
+                    }
+                )
             }
         }
     }
