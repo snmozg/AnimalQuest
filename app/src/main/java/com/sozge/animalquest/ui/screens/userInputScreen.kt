@@ -86,18 +86,48 @@ fun userInputScreen(userInputViewModel: userInputViewModel, navController: NavCo
 
             Spacer(modifier = Modifier.height(60.dp))
 
-            Button(
-                modifier = Modifier.fillMaxWidth().padding(16.dp),
-                onClick = {
-                    val selectedAnimal = userInputViewModel.uiState.value.animalSelected
-                    if (selectedAnimal.isNotEmpty()) {
-                        navController.navigate("welcomeScreen/$selectedAnimal")
-                    }
-                },
-                enabled = userInputViewModel.uiState.value.animalSelected.isNotEmpty()
-            ) {
-                Text(text = "Go to details")
+            TextComponent(
+                textValue = "Did you know?",
+                textSize = 20.sp
+            )
+
+            Spacer(modifier =Modifier.size(10.dp))
+
+            val infos = listOf(
+                "Cats have five toes on their front paws.",
+                "Elephants are the only mammals that can’t jump.",
+                "A group of flamingos is called a flamboyance.",
+                "Octopuses have three hearts and blue blood.",
+                "The fingerprints of a koala are so indistinguishable from humans that they can confuse crime scenes."
+            )
+            Column(
+                modifier = Modifier.fillMaxSize(),
+                verticalArrangement = Arrangement.SpaceBetween,
+
+                ) {
+                RandomInfoBox(infos = infos)
+                Spacer(modifier =Modifier.size(10.dp))
+
+                Button(
+                    modifier = Modifier.fillMaxWidth().padding(6.dp),
+                    onClick = {
+                        val selectedAnimal = userInputViewModel.uiState.value.animalSelected
+                        if (selectedAnimal.isNotEmpty()) {
+                            navController.navigate("welcomeScreen/$selectedAnimal")
+                        }
+                    },
+                    enabled = userInputViewModel.uiState.value.animalSelected.isNotEmpty()
+                ) {
+                    Text(text = "Go to details")
+                }
+
+
             }
+
+
+
+
+
         }
     }
 }
