@@ -4,6 +4,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -21,11 +22,13 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalFocusManager
@@ -33,6 +36,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -108,8 +112,8 @@ fun AnimalCard(
     val localFocusManager = LocalFocusManager.current
     Card(
         modifier = Modifier
-            .padding(24.dp)
-            .size(130.dp),
+            .padding(4.dp)
+            .size(170.dp),
         elevation = CardDefaults.cardElevation(4.dp)
     ) {
         Box(
@@ -120,20 +124,89 @@ fun AnimalCard(
                     color = if (selected) Color.Green else Color.Transparent,
                     shape = RoundedCornerShape(8.dp)
                 )
+                .padding(2.dp)
         ) {
-            Image(
-                modifier = Modifier
-                    .padding(16.dp)
-                    .clickable {
-                        localFocusManager.clearFocus()
-                        navController.navigate("details_screen/$animalName")
-                    },
-                painter = painterResource(id = image),
-                contentDescription = "animal image"
-            )
+            Column(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+
+                Text(
+                    text = animalName,
+                    fontSize = 18.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = Color.Black,
+                    modifier = Modifier.padding(8.dp)
+                )
+                Image(
+                    modifier = Modifier
+                        .size(190.dp)
+                        .padding(5.dp)
+                        .clickable {
+                            localFocusManager.clearFocus()
+                        },
+                    painter = painterResource(id = image),
+                    contentDescription = "animal image"
+                )
+            }
         }
     }
 }
+
+@Composable
+fun RandomInfoBox(infos: List<String>) {
+    var randomInfo by remember { mutableStateOf("") }
+
+
+    LaunchedEffect(Unit) {
+        randomInfo = infos.random()
+    }
+
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(16.dp)
+            .border(
+                width = 2.dp,
+                color = Color.Blue,
+                shape = RoundedCornerShape(16.dp)
+            )
+            .padding(16.dp)
+    ) {
+        Text(
+            text = randomInfo,
+            fontSize = 18.sp,
+            fontWeight = FontWeight.Bold,
+            color = Color.Black,
+            textAlign = TextAlign.Center,
+            modifier = Modifier.fillMaxWidth()
+        )
+    }
+}
+@Composable
+fun Button(
+    animalName: String,
+    navController: NavController
+) {
+    Button(
+        onClick = {
+            navController.navigate("details_screen/$animalName")
+        },
+        modifier = Modifier
+            .padding(16.dp)
+            .fillMaxWidth()
+    ) {
+        Text(
+            text = "Go to details of $animalName",
+            fontSize = 16.sp,
+            fontWeight = FontWeight.Bold,
+            color = Color.White
+        )
+    }
+}
+
+
+
 
 @Composable
 fun ButtonComponent(
