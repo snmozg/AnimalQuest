@@ -1,6 +1,7 @@
 package com.sozge.animalquest.ui.screens
 
 
+import androidx.compose.animation.core.Animatable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -18,6 +19,8 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -75,7 +78,13 @@ fun userInputScreen(userInputViewModel: userInputViewModel, navController: NavCo
                 val animals = listOf(
                     Pair("Cat", R.drawable.cat),
                     Pair("Dog", R.drawable.dog),
-                    Pair("Koala", R.drawable.koala)
+                    Pair("Koala", R.drawable.koala),
+                    Pair("Fish", R.drawable.fish),
+                    Pair("Hamster", R.drawable.hamster),
+                    Pair("Cow", R.drawable.cow),
+                    Pair("Monkey", R.drawable.monkey),
+                    Pair("Bear", R.drawable.love),
+                    Pair("Horse", R.drawable.horse),
                 )
                 val selectedAnimal = userInputViewModel.uiState.value.animalSelected
 
