@@ -1,5 +1,6 @@
 package com.sozge.animalquest
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -107,48 +108,32 @@ fun AnimalCard(
     image: Int,
     selected: Boolean,
     animalName: String,
-    userName: String
+    onAnimalSelected: (String) -> Unit
 ) {
-    val localFocusManager = LocalFocusManager.current
     Card(
         modifier = Modifier
             .padding(4.dp)
-            .size(170.dp),
-        elevation = CardDefaults.cardElevation(4.dp)
+            .size(170.dp)
+            .clickable { onAnimalSelected(animalName) },
+        elevation = CardDefaults.cardElevation(4.dp),
+        border = BorderStroke(2.dp, if (selected) Color.Green else Color.Transparent)
     ) {
-        Box(
-            modifier = Modifier
-                .fillMaxSize()
-                .border(
-                    width = 1.dp,
-                    color = if (selected) Color.Green else Color.Transparent,
-                    shape = RoundedCornerShape(8.dp)
-                )
-                .padding(2.dp)
+        Column(
+            modifier = Modifier.fillMaxSize(),
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Column(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-
-                Text(
-                    text = animalName,
-                    fontSize = 18.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = Color.Black,
-                    modifier = Modifier.padding(8.dp)
-                )
-                Image(
-                    modifier = Modifier
-                        .size(190.dp)
-                        .padding(5.dp)
-                        .clickable {
-                            localFocusManager.clearFocus()
-                        },
-                    painter = painterResource(id = image),
-                    contentDescription = "animal image"
-                )
-            }
+            Text(
+                text = animalName,
+                fontSize = 18.sp,
+                fontWeight = FontWeight.Bold,
+                color = Color.Black,
+                modifier = Modifier.padding(8.dp)
+            )
+            Image(
+                modifier = Modifier.size(100.dp),
+                painter = painterResource(id = image),
+                contentDescription = "Animal image"
+            )
         }
     }
 }
@@ -168,7 +153,7 @@ fun RandomInfoBox(infos: List<String>) {
             .padding(16.dp)
             .border(
                 width = 2.dp,
-                color = Color.Blue,
+                color = Color.Black,
                 shape = RoundedCornerShape(16.dp)
             )
             .padding(16.dp)
@@ -183,43 +168,8 @@ fun RandomInfoBox(infos: List<String>) {
         )
     }
 }
-@Composable
-fun Button(
-    animalName: String,
-    navController: NavController
-) {
-    Button(
-        onClick = {
-            navController.navigate("details_screen/$animalName")
-        },
-        modifier = Modifier
-            .padding(16.dp)
-            .fillMaxWidth()
-    ) {
-        Text(
-            text = "Go to details of $animalName",
-            fontSize = 16.sp,
-            fontWeight = FontWeight.Bold,
-            color = Color.White
-        )
-    }
-}
 
 
 
 
-@Composable
-fun ButtonComponent(
-    goToDetailsScreen: () -> Unit
-) {
-    Button(
-        modifier = Modifier.fillMaxWidth(),
-        onClick = goToDetailsScreen
-    ) {
-        TextComponent(
-            textValue = "Go to Details",
-            textSize = 18.sp,
-            colorValue = Color.White
-        )
-    }
-}
+

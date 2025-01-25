@@ -18,7 +18,7 @@ fun AnimalQuestNavigationGraph(userInputViewModel: userInputViewModel = viewMode
             userInputScreen(userInputViewModel, navController)
         }
         composable(
-            "details_screen/{animal}",
+            "welcomeScreen/{animal}",
             arguments = listOf(navArgument("animal") { type = NavType.StringType })
         ) { backStackEntry ->
             val animal = backStackEntry.arguments?.getString("animal") ?: ""
