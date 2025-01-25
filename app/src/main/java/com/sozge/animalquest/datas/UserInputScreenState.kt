@@ -1,4 +1,4 @@
-package com.sozge.animalquest.ui.screens
+package com.sozge.animalquest.datas
 
 data class UserInputScreenState(
     var nameEntered: String = "",

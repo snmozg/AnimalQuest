@@ -1,4 +1,4 @@
-package com.sozge.animalquest.ui.screens
+package com.sozge.animalquest.datas
 
 sealed class UserDataUiEvents {
     data class UserNameEntered(val name: String): UserDataUiEvents()
