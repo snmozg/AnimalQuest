@@ -35,7 +35,6 @@ import com.sozge.animalquest.AnimalCard
 import com.sozge.animalquest.R
 import com.sozge.animalquest.RandomInfoBox
 import com.sozge.animalquest.TextComponent
-import com.sozge.animalquest.TextFieldComponent
 import com.sozge.animalquest.TopBar
 import com.sozge.animalquest.ui.userInputViewModel
 import java.util.jar.Attributes.Name
