@@ -11,11 +11,7 @@ class userInputViewModel: ViewModel() {
         const val TAG = "userInputViewModel"
     }
 
-
-
-
         var uiState = mutableStateOf(UserInputScreenState())
-
 
     fun resetState() {
         uiState.value = UserInputScreenState()
@@ -32,7 +28,7 @@ class userInputViewModel: ViewModel() {
         }
     }
 
-    fun isValidState() : Boolean {
+    /*fun isValidState() : Boolean {
         if( !uiState.value.nameEntered.isNullOrEmpty()
             &&
             !uiState.value.animalSelected.isNullOrEmpty()) {
@@ -41,9 +37,8 @@ class userInputViewModel: ViewModel() {
             return false
         }
 
-    }
 
-
+     */
 }
 
 val animalFacts = mapOf(
@@ -99,9 +94,7 @@ val animalFacts = mapOf(
         "They have a strong sense of balance and coordination.",
         "Horses can sleep both lying down and standing up.",
         "They have a unique digestive system that relies on fermentation in the hindgut."
-    ),
-
-
+    )
 )
 
 

@@ -2,6 +2,7 @@ package com.sozge.animalquest.ui.screens
 
 
 import androidx.compose.animation.core.Animatable
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -14,6 +15,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
@@ -72,7 +74,7 @@ fun userInputScreen(userInputViewModel: userInputViewModel, navController: NavCo
 
             LazyRow(
                 modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.spacedBy(6.dp),
+                horizontalArrangement = Arrangement.spacedBy(16.dp),
                 contentPadding = PaddingValues(horizontal = 16.dp)
             ) {
                 val animals = listOf(
@@ -94,7 +96,8 @@ fun userInputScreen(userInputViewModel: userInputViewModel, navController: NavCo
                         image = animal.second,
                         selected = selectedAnimal == animal.first,
                         animalName = animal.first,
-                        onAnimalSelected = { userInputViewModel.onEvent(UserDataUiEvents.AnimalSelected(it)) }
+                        onAnimalSelected = { userInputViewModel.onEvent(UserDataUiEvents.AnimalSelected(it)) },
+
                     )
                 }
             }
@@ -120,7 +123,8 @@ fun userInputScreen(userInputViewModel: userInputViewModel, navController: NavCo
                 Button(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(horizontal = 26.dp, vertical = 10.dp),
+                        .padding(horizontal = 16.dp, vertical = 10.dp)
+                        .height(60.dp),
                     onClick = {
                         val selectedAnimal = userInputViewModel.uiState.value.animalSelected
                         if (selectedAnimal.isNotEmpty()) {
@@ -139,7 +143,7 @@ fun userInputScreen(userInputViewModel: userInputViewModel, navController: NavCo
                 )
 
                 RandomInfoBox(infos = infos)
-                Spacer(modifier =Modifier.size(50.dp))
+                Spacer(modifier =Modifier.size(40.dp))
             }
         }
     }

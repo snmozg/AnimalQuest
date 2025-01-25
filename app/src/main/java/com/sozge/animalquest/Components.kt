@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentHeight
@@ -69,7 +70,7 @@ fun TextComponent(
 }
 
 
-@Composable
+/* @Composable
 fun TextFieldComponent(onTextChanged: (String) -> Unit) {
 
     var currentValue by remember {
@@ -96,6 +97,8 @@ fun TextFieldComponent(onTextChanged: (String) -> Unit) {
     )
 }
 
+ */
+
 @Composable
 fun AnimalCard(
     navController: NavController,
@@ -108,6 +111,8 @@ fun AnimalCard(
 
     Card(
         modifier = Modifier
+            .height(260.dp)
+            .fillMaxWidth(0.4f)
             .padding(4.dp)
             .size(170.dp)
             .clickable { onAnimalSelected(animalName) },
@@ -126,7 +131,7 @@ fun AnimalCard(
                 modifier = Modifier.padding(8.dp)
             )
             Image(
-                modifier = Modifier.size(100.dp),
+                modifier = Modifier.size(200.dp),
                 painter = painterResource(id = image),
 
                 contentDescription = "Animal image"
@@ -151,7 +156,7 @@ fun RandomInfoBox(infos: List<String>) {
             .border(
                 width = 2.dp,
                 color = Color.Black,
-                shape = RoundedCornerShape(16.dp)
+                shape = RoundedCornerShape(6.dp)
             )
             .padding(16.dp)
     ) {
