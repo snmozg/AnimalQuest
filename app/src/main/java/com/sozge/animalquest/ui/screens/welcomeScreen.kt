@@ -74,8 +74,6 @@ fun welcomeScreen(
                         .fillMaxWidth(),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-
-
                     Text(
                         text = "Did you know about $selectedAnimal?",
                         fontSize = 20.sp,
@@ -107,11 +105,23 @@ fun welcomeScreen(
             }
 
             Spacer(modifier = Modifier.height(40.dp))
+            Button(
 
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 16.dp),
 
-
-
-
+                onClick = { userInputViewModel.resetState()
+                        navController.navigateUp() },
+                colors = ButtonDefaults.buttonColors(Color.LightGray)
+            ) {
+                Text(
+                    text = "Back to Selection",
+                    fontSize = 18.sp,
+                    color = Color.Black,
+                    modifier = Modifier.padding(vertical = 12.dp)
+                )
+            }
         }
     }
 }
