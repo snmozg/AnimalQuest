@@ -1,4 +1,4 @@
-package com.sozge.animalquest.ui.screens
+package com.sozge.animalquest.graph
 
 import androidx.compose.runtime.Composable
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -7,13 +7,19 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.sozge.animalquest.ui.userInputViewModel
+import com.sozge.animalquest.pages.userInputScreen
+import com.sozge.animalquest.pages.welcomeScreen
+import com.sozge.animalquest.viewmodels.userInputViewModel
 
 @Composable
 
 fun AnimalQuestNavigationGraph(userInputViewModel: userInputViewModel = viewModel()) {
     val navController = rememberNavController()
-    NavHost(navController = navController, startDestination = "user_input_screen") {
+
+    NavHost(
+        navController = navController,
+        startDestination = "user_input_screen"
+    ) {
         composable("user_input_screen") {
             userInputScreen(userInputViewModel, navController)
         }
@@ -22,7 +28,11 @@ fun AnimalQuestNavigationGraph(userInputViewModel: userInputViewModel = viewMode
             arguments = listOf(navArgument("animal") { type = NavType.StringType })
         ) { backStackEntry ->
             val animal = backStackEntry.arguments?.getString("animal") ?: ""
-            welcomeScreen(navController = navController, selectedAnimal = animal, userInputViewModel= userInputViewModel)
+            welcomeScreen(
+                navController = navController,
+                selectedAnimal = animal,
+                userInputViewModel = userInputViewModel
+            )
         }
     }
 }

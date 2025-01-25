@@ -1,45 +1,4 @@
-package com.sozge.animalquest.ui
-
-import androidx.compose.runtime.mutableStateOf
-import androidx.lifecycle.ViewModel
-import com.sozge.animalquest.ui.screens.UserDataUiEvents
-import com.sozge.animalquest.ui.screens.UserInputScreenState
-
-class userInputViewModel: ViewModel() {
-
-    companion object {
-        const val TAG = "userInputViewModel"
-    }
-
-        var uiState = mutableStateOf(UserInputScreenState())
-
-    fun resetState() {
-        uiState.value = UserInputScreenState()
-    }
-
-    fun onEvent(event: UserDataUiEvents) {
-        when(event) {
-            is UserDataUiEvents.UserNameEntered -> {
-                uiState.value = uiState.value.copy(nameEntered = event.name)
-            }
-            is UserDataUiEvents.AnimalSelected -> {
-                uiState.value = uiState.value.copy(animalSelected = event.animal)
-            }
-        }
-    }
-
-    /*fun isValidState() : Boolean {
-        if( !uiState.value.nameEntered.isNullOrEmpty()
-            &&
-            !uiState.value.animalSelected.isNullOrEmpty()) {
-            return true
-        }else {
-            return false
-        }
-
-
-     */
-}
+package com.sozge.animalquest.lists
 
 val animalFacts = mapOf(
     "Cat" to listOf(
@@ -52,6 +11,44 @@ val animalFacts = mapOf(
         "Dogs can learn more than 1000 words.",
         "A dog’s nose print is unique, like a human fingerprint."
     ),
+    "Elephant" to listOf(
+        "Elephants are the largest land animals on Earth.",
+        "Elephants use their trunks for drinking, smelling, and grabbing objects.",
+        "Elephants can recognize themselves in mirrors, showing self-awareness."
+    ),
+    "Giraffe" to listOf(
+        "Giraffes are the tallest mammals on Earth, with necks up to 6 feet long.",
+        "Giraffes only need 5 to 30 minutes of sleep per day.",
+        "A giraffe’s tongue is about 18–20 inches long and helps it grab leaves."
+    ),
+    "Lamp" to listOf(
+        "Lamps have been used for thousands of years to provide light.",
+        "The first electric lamp was invented by Thomas Edison in 1879.",
+        "Modern LED lamps are energy-efficient and long-lasting."
+    ),
+    "Lion" to listOf(
+        "Lions are known as the 'king of the jungle.'",
+        "A lion’s roar can be heard up to 5 miles away.",
+        "Lions live in groups called prides, usually led by females."
+    ),
+    "Owl" to listOf(
+        "Owls can rotate their heads up to 270 degrees.",
+        "Owls are silent fliers thanks to the structure of their feathers.",
+        "Owls are nocturnal and hunt primarily at night."
+    ),
+    "Parrot" to listOf(
+        "Parrots are highly intelligent and can mimic human speech.",
+        "There are about 393 species of parrots worldwide.",
+        "Parrots can live up to 80 years in captivity."
+    ),
+    "Wolf" to listOf(
+        "Wolves are known for their complex social structures within packs.",
+        "Wolves communicate using body language, vocalizations, and scent marking.",
+        "A wolf's howl can travel up to 10 miles in open areas."
+    )
+
+
+    /*
     "Koala" to listOf(
         "Koalas are marsupials native to Australia and are known for their eucalyptus diet.",
         "They sleep up to 18–22 hours a day to conserve energy.",
@@ -95,9 +92,6 @@ val animalFacts = mapOf(
         "Horses can sleep both lying down and standing up.",
         "They have a unique digestive system that relies on fermentation in the hindgut."
     )
+
+     */
 )
-
-
-
-
-
