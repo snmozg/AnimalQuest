@@ -22,6 +22,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -30,13 +31,15 @@ import androidx.navigation.NavController
 import com.sozge.animalquest.TextComponent
 import com.sozge.animalquest.TopBar
 import com.sozge.animalquest.ui.animalFacts
+import com.sozge.animalquest.ui.userInputViewModel
 
 @Composable
 fun welcomeScreen(
     navController: NavController,
     selectedAnimal: String,
-    userName: String
-) {
+    userInputViewModel: userInputViewModel,
+
+    ) {
     val facts = animalFacts[selectedAnimal] ?: emptyList()
     val randomFact = facts.randomOrNull() ?: "No facts available."
 
@@ -71,6 +74,8 @@ fun welcomeScreen(
                         .fillMaxWidth(),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
+
+
                     Text(
                         text = "Did you know about $selectedAnimal?",
                         fontSize = 20.sp,
@@ -104,20 +109,9 @@ fun welcomeScreen(
             Spacer(modifier = Modifier.height(40.dp))
 
 
-            Button(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 16.dp),
-                onClick = { navController.navigateUp() },
-                colors = ButtonDefaults.buttonColors(Color.LightGray)
-            ) {
-                Text(
-                    text = "Back to Selection",
-                    fontSize = 18.sp,
-                    color = Color.Black,
-                    modifier = Modifier.padding(vertical = 12.dp)
-                )
-            }
+
+
+
         }
     }
 }

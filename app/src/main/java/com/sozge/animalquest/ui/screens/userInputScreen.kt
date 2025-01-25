@@ -50,12 +50,18 @@ fun userInputScreen(userInputViewModel: userInputViewModel, navController: NavCo
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(top = 50.dp, start = 18.dp, end = 18.dp),
+                .padding(top = 80.dp, start = 18.dp, end = 18.dp),
             verticalArrangement = Arrangement.Top
         ) {
             TopBar("Let's learn together!")
 
             Spacer(modifier = Modifier.height(20.dp))
+
+            TextComponent(textValue = "\n" +
+                    "Choose your favorite animal, click the button and learn about it.", textSize = 17.sp)
+
+            Spacer(modifier = Modifier.height(60.dp))
+
 
             TextComponent("Pick an animal.", textSize = 24.sp)
 
@@ -86,12 +92,7 @@ fun userInputScreen(userInputViewModel: userInputViewModel, navController: NavCo
 
             Spacer(modifier = Modifier.height(60.dp))
 
-            TextComponent(
-                textValue = "Did you know?",
-                textSize = 20.sp
-            )
 
-            Spacer(modifier =Modifier.size(10.dp))
 
             val infos = listOf(
                 "Cats have five toes on their front paws.",
@@ -105,11 +106,12 @@ fun userInputScreen(userInputViewModel: userInputViewModel, navController: NavCo
                 verticalArrangement = Arrangement.SpaceBetween,
 
                 ) {
-                RandomInfoBox(infos = infos)
-                Spacer(modifier =Modifier.size(10.dp))
+
 
                 Button(
-                    modifier = Modifier.fillMaxWidth().padding(6.dp),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 26.dp, vertical = 10.dp),
                     onClick = {
                         val selectedAnimal = userInputViewModel.uiState.value.animalSelected
                         if (selectedAnimal.isNotEmpty()) {
@@ -120,14 +122,16 @@ fun userInputScreen(userInputViewModel: userInputViewModel, navController: NavCo
                 ) {
                     Text(text = "Go to details")
                 }
+                Spacer(modifier = Modifier.height(60.dp))
 
+                TextComponent(
+                    textValue = "Did you know?",
+                    textSize = 20.sp
+                )
 
+                RandomInfoBox(infos = infos)
+                Spacer(modifier =Modifier.size(50.dp))
             }
-
-
-
-
-
         }
     }
 }

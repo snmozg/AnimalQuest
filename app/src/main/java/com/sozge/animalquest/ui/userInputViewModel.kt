@@ -12,7 +12,14 @@ class userInputViewModel: ViewModel() {
     }
 
 
+
+
         var uiState = mutableStateOf(UserInputScreenState())
+
+
+    fun resetState() {
+        uiState.value = UserInputScreenState()
+    }
 
     fun onEvent(event: UserDataUiEvents) {
         when(event) {
@@ -35,6 +42,7 @@ class userInputViewModel: ViewModel() {
         }
 
     }
+
 
 }
 

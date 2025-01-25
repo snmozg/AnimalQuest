@@ -49,14 +49,8 @@ import androidx.navigation.NavController
         Text(text = value,
             color = Color.Black,
             fontSize = 24.sp,
-            fontWeight = FontWeight.Medium
+            fontWeight = FontWeight.Bold
             )
-
-         Spacer(modifier =Modifier.weight(1f))
-         Image(
-             modifier = Modifier.size(80.dp),
-             painter = painterResource(id = R.drawable.koala),
-             contentDescription = "app logo")
      }
  }
 
@@ -110,6 +104,8 @@ fun AnimalCard(
     animalName: String,
     onAnimalSelected: (String) -> Unit
 ) {
+    val localFocusManager = LocalFocusManager.current
+
     Card(
         modifier = Modifier
             .padding(4.dp)
@@ -132,6 +128,7 @@ fun AnimalCard(
             Image(
                 modifier = Modifier.size(100.dp),
                 painter = painterResource(id = image),
+
                 contentDescription = "Animal image"
             )
         }

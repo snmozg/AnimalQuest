@@ -22,7 +22,7 @@ fun AnimalQuestNavigationGraph(userInputViewModel: userInputViewModel = viewMode
             arguments = listOf(navArgument("animal") { type = NavType.StringType })
         ) { backStackEntry ->
             val animal = backStackEntry.arguments?.getString("animal") ?: ""
-            welcomeScreen(navController = navController, selectedAnimal = animal, userName = userInputViewModel.uiState.value.nameEntered)
+            welcomeScreen(navController = navController, selectedAnimal = animal, userInputViewModel= userInputViewModel)
         }
     }
 }
